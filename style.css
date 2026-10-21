@@ -1,0 +1,475 @@
+/* =====================================================================
+   SMART QUEUE - STYLE FILE
+   TO CHANGE THE THEME: edit the colours in :root below, save, press Ctrl+F5.
+     --bg      page background          --card   box / card background
+     --ink     main text colour         --mut    grey text colour
+     --acc     main colour (buttons, "Now Serving" card, active menu)
+     --amb     highlight colour         --red    cancel / emergency colour
+     --side    sidebar + display board  --side2  sidebar hover colour
+   BACKGROUND IMAGE: in "body" below, replace  background: var(--bg)  with
+     background: url(your-image.jpg) center / cover fixed
+   FONT: change the font-family in the "*" rule.
+   ===================================================================== */
+
+/* ---------- THEME COLOURS (light mode) ---------- */
+:root {
+  --side: #12302f;
+  --side2: #1b4543;
+  --card: #fff;
+  --bg: #f4f1ea;
+  --ink: #1c2b2d;
+  --mut: #6b7a7c;
+  --line: #e3ded2;
+  --acc: #0e7c7b;
+  --amb: #e9a23b;
+  --red: #d1495b;
+}
+
+/* ---------- DARK MODE colours (button at bottom of sidebar) ---------- */
+body.dark {
+  --card: #182628;
+  --bg: #0f1819;
+  --ink: #e6efee;
+  --mut: #8fa3a3;
+  --line: #243536;
+}
+
+aside small+small {
+  margin-top: 0;
+}
+
+/* ---------- BASE: font, page layout ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  display: flex;
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ---------- SIDEBAR ---------- */
+aside {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--side);
+  color: #cfe3e0;
+  padding: 24px 14px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+aside h1 {
+  font-size: 21px;
+  color: #fff;
+  padding: 0 10px 26px;
+}
+
+aside h1 span {
+  color: var(--amb);
+}
+
+aside a {
+  padding: 11px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 4px;
+  font-size: 14.5px;
+}
+
+aside a:hover {
+  background: var(--side2);
+}
+
+aside a.on {
+  background: var(--acc);
+  color: #fff;
+}
+
+aside small {
+  margin-top: auto;
+  padding: 10px;
+  opacity: 0.65;
+  cursor: pointer;
+}
+
+/* ---------- MAIN AREA, TOP BAR, CARDS, GRID ---------- */
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 26px 32px;
+  max-width: 1150px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.top h2 {
+  font-size: 25px;
+}
+
+.top span {
+  color: var(--mut);
+  margin-right: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.g4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.g2 {
+  grid-template-columns: 1.2fr 1fr;
+}
+
+.stat b {
+  display: block;
+  font-size: 32px;
+  margin-top: 4px;
+}
+
+.lbl {
+  color: var(--mut);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+h3 {
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+/* ---------- BUTTONS AND FORM FIELDS ---------- */
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--acc);
+  color: #fff;
+  font-size: 14px;
+  transition: 0.15s;
+}
+
+button:hover {
+  filter: brightness(1.12);
+}
+
+button.sm {
+  padding: 5px 11px;
+  font-size: 12.5px;
+  margin-left: 5px;
+}
+
+button.red {
+  background: var(--red);
+}
+
+button.amb {
+  background: var(--amb);
+  color: #222;
+}
+
+button.ghost {
+  background: var(--line);
+  color: var(--ink);
+}
+
+input,
+select {
+  width: 100%;
+  padding: 11px;
+  margin: 6px 0 14px;
+  border: 1px solid #d3cdbf;
+  border-radius: 8px;
+  font-size: 14.5px;
+  background: var(--card);
+  color: var(--ink);
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid var(--acc);
+  border-color: transparent;
+}
+
+/* ---------- DASHBOARD: "Now Serving" card ---------- */
+.now {
+  background: var(--acc);
+  color: #fff;
+  border: 0;
+}
+
+.now .big {
+  font-size: 78px;
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 6px 0;
+}
+
+.now .lbl {
+  color: #bfe7e4;
+}
+
+/* ---------- QUEUE TABLE ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th {
+  text-align: left;
+  color: var(--mut);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px;
+  border-bottom: 2px solid var(--line);
+}
+
+td {
+  padding: 11px 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+tr.done {
+  opacity: 0.5;
+}
+
+td small {
+  color: var(--mut);
+}
+
+.tok {
+  font-weight: 800;
+  color: var(--acc);
+}
+
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+
+/* ---------- TAGS, BADGES, BARS, FILTER CHIPS ---------- */
+.tag {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #eceae2;
+  color: #555;
+}
+
+.Emergency {
+  background: #fbe0e4;
+  color: var(--red);
+}
+
+.Senior {
+  background: #fdf0d5;
+  color: #a86a05;
+}
+
+.serving {
+  background: #d8f0ee;
+  color: var(--acc);
+}
+
+.waiting {
+  background: #fdf0d5;
+  color: #a86a05;
+}
+
+.done {
+  background: #eceae2;
+  color: #777;
+}
+
+.bar {
+  height: 9px;
+  border-radius: 5px;
+  background: var(--line);
+  margin: 5px 0 13px;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.chips button {
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  margin-right: 6px;
+}
+
+.chips button.on {
+  background: var(--ink);
+  color: #fff;
+}
+
+.tool {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.tool input {
+  margin: 0;
+  max-width: 300px;
+}
+
+/* ---------- DISPLAY BOARD (TV screen) ---------- */
+.board {
+  background: var(--side);
+  color: #fff;
+  border-radius: 16px;
+  padding: 44px;
+  text-align: center;
+}
+
+.board .big {
+  font-size: 150px;
+  font-weight: 800;
+  color: var(--amb);
+  line-height: 1;
+}
+
+.board .nx {
+  display: inline-block;
+  background: var(--side2);
+  border-radius: 10px;
+  padding: 12px 20px;
+  margin: 6px;
+  font-size: 18px;
+}
+
+/* ---------- TOKEN SLIP POPUP AND MESSAGE TOAST ---------- */
+.ov {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+}
+
+.slip {
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 14px;
+  padding: 30px 40px;
+  text-align: center;
+  min-width: 300px;
+  border-top: 8px solid var(--acc);
+}
+
+.slip .big {
+  font-size: 70px;
+  font-weight: 800;
+  color: var(--acc);
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--ink);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+/* ---------- PRINT (token slip) AND MOBILE LAYOUT ---------- */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .slip,
+  .slip * {
+    visibility: visible;
+  }
+
+  .slip {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+  }
+}
+
+@media (max-width: 850px) {
+
+  body,
+  #root {
+    flex-direction: column;
+  }
+
+  aside {
+    width: 100%;
+    height: auto;
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  aside h1 {
+    padding: 0 14px 0 0;
+  }
+
+  .g4 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .g2 {
+    grid-template-columns: 1fr;
+  }
+
+  .main {
+    padding: 16px;
+  }
+
+  .card {
+    overflow-x: auto;
+  }
+}
